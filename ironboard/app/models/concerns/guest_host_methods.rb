@@ -1,5 +1,5 @@
 module GuestHostMethods
-
+# very nice
   def past_events
     self.events.past
   end

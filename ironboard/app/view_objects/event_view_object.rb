@@ -1,5 +1,5 @@
 class EventViewObject
-
+  # great use of view object
   def initialize(event)
     @event = event
   end
@@ -11,10 +11,15 @@ class EventViewObject
     hour = '0'+ hour  if hour.length == 1
   	minutes = "#{@event.start_time.min}"
   	minutes = '0'+minutes if minutes.length == 1
+    # consider using the strftime library
   	"#{hour}:#{minutes} #{am_pm}"
   end
 
 	def ends_at
+    # these methods are using some repetition with the starts at method
+    # has too much logic for one method
+
+    # consider using the strftime library
 		am_pm = "AM" 	
 		am_pm = "PM" if @event.end_time.hour>12
 		hour = "#{@event.end_time.hour%12}"

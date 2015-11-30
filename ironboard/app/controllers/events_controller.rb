@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host = current_user.host
     @event.title = @event.title.capitalize 
+    # move this loic into a mehtod, good amount of repetition here
       if  @event.day != nil && @event.validate_day? && @event.save 
         redirect_to event_path(@event)
       elsif @event.day != nil && !@event.validate_day? 

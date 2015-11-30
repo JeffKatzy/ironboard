@@ -7,6 +7,7 @@
         <td><%= link_to event.title, event_path(event) %></td>
         <td>
           <%= form_for(@rating, url: "/events/#{event.id}/rate") do |f| %>
+          
            | <%= f.label :stars %>
             <%= f.select :stars, (1..5) %>
         </td>

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.img_url =  "board#{rand(1..10)}.jpeg"
+    # where are these methods?
     @user.build_host
     @user.build_guest
     @user.name = @user.name.capitalize

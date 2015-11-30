@@ -19,14 +19,18 @@ class Event < ActiveRecord::Base
   end
  
  def self.sort_by_day
+  # this should be done on a sql level, ideally
    self.all.sort_by { |event| event.day }
   end 
  
   def validate_day?
+    # use better name like, in future?
     self.day >= Date.today
   end 
 
   def average_rating
+    # would have been easier if moved to sql, and moved part of this method to rating class
+    # use delegation
       (ratings.map {|rating| rating.stars}.inject(:+).to_f / ratings.count).round(0.5)
   end
 

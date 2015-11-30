@@ -1,3 +1,5 @@
+<!-- make use of partials - they dont take much time to implement -->
+
 <% if flash[:notice] %>
    <br><div class="notice"><%= flash[:notice] %></div>
  <% end %>
@@ -9,9 +11,11 @@
 <%= image_tag @user.img_url , size: "90", alt: "user_avatar" %>
 
 <br>
+<!-- double negative, and too much logic for view -->
 <% if !@user.guest.events.empty? %>
 Events <%= @user.name %> is attending:
 <ul>
+<!-- move logic out of view -->
   <% @user.guest.upcoming_events.sort_by_day.each do |event| %>
   <li>
   <%= link_to event.title,event_path(event) %>: <%= event.description %> (<%= event.day %>) <br>
@@ -24,6 +28,7 @@ Events <%= @user.name %> is attending:
 </ul>
 <br>
 <br>
+<!-- dont use a double negative -->
 <% if !@user.host.events.empty? %>
 Events <%= @user.name %> is hosting:
 <ul>
@@ -39,6 +44,9 @@ Events <%= @user.name %> is hosting:
 </ul> 
 <br>
 <br>
+<!-- Again, no double negative -->
+<!-- This view has a good amount of logic - consider moving to view object -->
+<!-- also use partials for all of these if blocks, then I believe refactoring into a view object could really clean this up -->
 <% if !@user.guest.past_events.empty? %>
 Events <%= @user.name %> has attended:
 <ul>

@@ -2,7 +2,7 @@ module Adapters
 
 	class GiphyConnection
 		include HTTParty
-
+# cool
 		def initialize
 			@connection = self.class
 		end
